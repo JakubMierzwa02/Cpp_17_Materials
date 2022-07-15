@@ -9,7 +9,9 @@ Vector.cpp
 Complex.h 
 Complex.cpp
 Container.h
-Container.cpp)
+Container.cpp 
+Shape.h
+Shape.cpp)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Cpp_17_Materials PROPERTY CXX_STANDARD 20)
