@@ -4,13 +4,13 @@
 
 class Complex
 {
-	double re;
-	double im;
+	double re = 0;
+	double im = 0;
 
 public:
 	Complex(double r, double i) : re{ r }, im{ i } {}
-	Complex(double r) : re{ r }, im{ 0 } {}
-	Complex() : re{ 0 }, im{ 0 } {}
+	Complex(double r) : re{ r } {}
+	Complex() {}
 
 	double real() const { return re; }
 	void real(double d) { re = d; }

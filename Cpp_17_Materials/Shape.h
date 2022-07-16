@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Vector.h"
 #include <vector>
 
 struct Point
@@ -11,6 +12,9 @@ struct Point
 class Shape
 {
 public:
+	Shape(const Shape&) = delete;
+	Shape& operator=(const Shape&) = delete;
+
 	virtual Point center() const = 0;
 	virtual void move(Point to) = 0;
 	virtual void draw() const = 0;
@@ -60,4 +64,17 @@ public:
 	}
 	void set_mouth(Shape* s);
 	virtual void wink(int i);
+};
+
+class X
+{
+public:
+	X(Vector);
+	X();
+	X(const X&);
+	X(X&&);
+	X& operator=(const X&);
+	X& operator=(X&&);
+	~X();
+	// ...
 };
