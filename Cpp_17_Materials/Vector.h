@@ -4,15 +4,18 @@
 #include <stdexcept>
 #include <numeric>
 #include <algorithm>
+#include <thread>
 
 enum class Color { red, blue, green };
 enum class Traffic_light { green, yellow, red };
 
+template<typename T>
 class Vector
 {
 private:
-	double* elem;
+	T* elem;
 	int sz;
+
 public:
 	explicit Vector(int s);
 
@@ -24,7 +27,7 @@ public:
 		}
 	}
 
-	Vector(std::initializer_list<double> lst) : elem{new double[lst.size()]}, sz{static_cast<int>(lst.size())}
+	Vector(std::initializer_list<T> lst) : elem{new T[lst.size()]}, sz{static_cast<int>(lst.size())}
 	{
 		std::copy(lst.begin(), lst.end(), elem);
 	}
@@ -62,21 +65,41 @@ public:
 			throw "Error!";
 	}*/
 
-	double& operator[](int);
-	const double& operator[](int) const;
+	T& operator[](int);
+	const T& operator[](int) const;
 
 	int size();
+
+	void write(const Vector<std::string>& ws)
+	{
+		for (int i = 0; i != vs.size(); ++i)
+			std::cout << vs[i] << '\n';
+	}
+
+	template<typename T>
+	T* begin(Vector<T>& x)
+	{
+		return x.size() ? &x[0] : nullptr;
+	}
+
+	template<typename T>
+	T* end(Vector<T>& x)
+	{
+		return x.size() ? &x[0] + x.size() : nullptr;
+	}
 };
 
 double read_and_sum(int);
 
 Traffic_light& operator++(Traffic_light&);
 
-void f(Vector& v);
+template<typename T>
+void f(Vector<T>& v);
 
+template<typename T>
 void user(int sz) noexcept
 {
-	Vector v(sz);
+	Vector<int> v(sz);
 	std::iota(&v[0], &v[sz], 1);
 	// ...
 }

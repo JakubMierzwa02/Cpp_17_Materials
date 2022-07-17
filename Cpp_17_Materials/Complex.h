@@ -49,4 +49,9 @@ public:
 	{
 		return !(a == b);
 	}
+
+	constexpr std::complex<double> operator""i(long double arg)
+	{
+		return { 0, arg };
+	}
 };
