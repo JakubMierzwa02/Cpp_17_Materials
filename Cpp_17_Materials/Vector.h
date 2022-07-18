@@ -17,9 +17,9 @@ private:
 	int sz;
 
 public:
-	explicit Vector(int s);
+	//explicit Vector(int s);
 
-	Vector(int s) : elem{ new double[s] }, sz{ s }
+	explicit Vector(int s) : elem{ new double[s] }, sz{ s }
 	{
 		for (int i = 0; i != s; i++)
 		{
